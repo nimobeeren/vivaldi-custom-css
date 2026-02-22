@@ -1,0 +1,53 @@
+:root {
+  /* Vivaldi's JS sets tab height to --tab-height-js; we scale up to --tab-height.
+     If you change UI density in Vivaldi settings, update --tab-height-js to match. */
+  --tab-height-js: 33;
+  --tab-height: 41;
+}
+
+/* Set font size of tabs and address bar */
+.tab,
+.toolbar {
+  font-size: 14px;
+}
+
+/* Make tabs taller */
+.tab-position {
+  --Height: calc(var(--tab-height) * 1px) !important;
+  transform: translateX(var(--PositionX))
+    translateY(
+      calc(var(--PositionY) / var(--tab-height-js) * var(--tab-height))
+    ) !important;
+}
+.tab .tab-header {
+  flex: 0 0 calc((var(--tab-height) - 3) * 1px);
+}
+
+/* Vivaldi's JS sets max-height on .resize to (N * --tab-height-js) px. With our
+larger tab height this would cause vertical overflow. Instead, we override it to 100%
+to move the new tab button to the bottom of the toolbar. We leave some space for the new
+tab button. */
+#tabs-container.left .resize,
+#tabs-container.right .resize {
+  max-height: calc(100% - 96px) !important;
+}
+
+/* Hide the button that displays a list of all tabs (bottom of the toolbar) */
+.tabs-button {
+  display: none;
+}
+
+/* Set appearance of new tab button */
+.newtab {
+  width: 100%;
+  margin-top: 6px;
+}
+/* !important didn't work for some reason, need this specific selector */
+#tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar > button {
+  padding: 20px;
+}
+
+/* Set height of tabbar workspace button */
+.tabbar-workspace-button button {
+  height: 40px !important;
+}
