@@ -12,7 +12,7 @@
 }
 
 /* Make tabs taller */
-.tab-position {
+.tab-position, .separator {
   --Height: calc(var(--tab-height) * 1px) !important;
   transform: translateX(var(--PositionX))
     translateY(
@@ -49,5 +49,5 @@ tab button. */
 
 /* Set height of tabbar workspace button */
 .tabbar-workspace-button button {
-  height: 40px !important;
+  height: calc(var(--tab-height) * 1px) !important;
 }
